@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.1.RELEASE'
+	id "io.spring.dependency-management" version "1.0.8.RELEASE"
+	id 'java'
+}
+
+
+group = 'com.mkuligowski'
+version = '0.0.1'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation("org.springframework.boot:spring-boot-starter-reactor-netty")
+	implementation group: 'io.vavr', name: 'vavr', version: '0.10.4'
+
+
+	implementation('org.springframework.boot:spring-boot-starter-aop')
+
+	implementation group: 'com.google.api-client', name: 'google-api-client', version: '1.30.9'
+	implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+
+	implementation 'org.flywaydb:flyway-core'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok:1.18.4'
+	runtimeOnly 'org.postgresql:postgresql'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation "com.h2database:h2"
+}
+
+test {
+	useJUnitPlatform()
+}
